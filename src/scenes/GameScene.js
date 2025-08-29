@@ -7,11 +7,13 @@ export default class GameScene extends Phaser.Scene {
     super("GameScene");
   }
 
-  create() {
-    this.mapWidth = 1400;
-    this.mapHeight = 900;
-    this.gridSize = 15;
-    this.placeMode = null; // aktueller Platzierungsmodus
+create() {
+  // Feste Gridgröße (Pixel pro Kachel)
+  this.gridSize = 16;
+  // Map-Größe als Vielfaches der Gridgröße, damit alle Kacheln exakt gleich groß sind
+  this.mapWidth = 88 * this.gridSize;   // 1408px
+  this.mapHeight = 56 * this.gridSize;  // 896px
+  this.placeMode = null; // aktueller Platzierungsmodus
 
   const canvasWidth = this.sys.game.config.width;
   const canvasHeight = this.sys.game.config.height;

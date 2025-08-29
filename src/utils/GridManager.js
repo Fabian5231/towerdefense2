@@ -5,6 +5,7 @@ export default class GridManager {
     this.mapHeight = mapHeight;
     this.gridSize = gridSize;
 
+    // Anzahl der Kacheln (exakt, da mapWidth/mapHeight Vielfache von gridSize sind)
     this.gridWidth = Math.floor(mapWidth / gridSize);
     this.gridHeight = Math.floor(mapHeight / gridSize);
 
@@ -50,17 +51,11 @@ export default class GridManager {
     };
   }
 
+  // Oben-links (Top-Left) Weltkoordinaten für Rasterpunkt
   gridToWorld(gridX, gridY) {
     return {
-      x: gridX * this.gridSize + this.gridSize / 2,
-      y: gridY * this.gridSize + this.gridSize / 2
-    };
-  }
-
-  gridToWorldForBuilding(gridX, gridY, width, height) {
-    return {
-      x: (gridX + width / 2) * this.gridSize,
-      y: (gridY + height / 2) * this.gridSize
+      x: gridX * this.gridSize,
+      y: gridY * this.gridSize
     };
   }
 

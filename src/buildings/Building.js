@@ -7,31 +7,27 @@ export default class Building {
     this.height = height; // in Grid-Zellen
     this.color = color;
 
-    // Weltkoordinaten berechnen (Mitte des Gebäudes)
-    const worldPos = scene.gridManager.gridToWorldForBuilding(
-      gridX,
-      gridY,
-      width,
-      height
-    );
+    // Weltkoordinaten: oben-links an die Grid-Koordinaten andocken
+    const worldX = gridX * scene.gridSize;
+    const worldY = gridY * scene.gridSize;
 
-    // Grafik erstellen
+    // Grafik erstellen (Origin oben-links = 0)
     this.graphic = scene.add.rectangle(
-      worldPos.x,
-      worldPos.y,
+      worldX,
+      worldY,
       width * scene.gridSize,
       height * scene.gridSize,
       color
-    );
+    ).setOrigin(0);
 
     // In das Spielfeld-Container einfügen, damit es mit Grid/Background ausgerichtet ist
     if (scene.fieldContainer) {
       scene.fieldContainer.add(this.graphic);
     }
 
-    // Position speichern
-    this.x = worldPos.x;
-    this.y = worldPos.y;
+    // Position speichern (oben-links)
+    this.x = worldX;
+    this.y = worldY;
   }
 
   destroy() {
