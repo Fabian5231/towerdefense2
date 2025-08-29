@@ -23,7 +23,6 @@ export default class Building {
       height * scene.gridSize,
       color
     );
-    this.graphic.setStrokeStyle(3, 0xffffff);
 
     // In das Spielfeld-Container einfügen, damit es mit Grid/Background ausgerichtet ist
     if (scene.fieldContainer) {
