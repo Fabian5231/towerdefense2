@@ -31,7 +31,6 @@ export default class GameScene extends Phaser.Scene {
     this.mapHeight,
     0x2a2a2a
   );
-  bg.setStrokeStyle(4, 0xffffff);
   this.fieldContainer.add(bg);
 
   // Klicks auf dem Spielfeld erlauben (für Gebäudeplatzierung)
@@ -67,6 +66,17 @@ export default class GameScene extends Phaser.Scene {
 
   // ✅ Menü rechts daneben
   this.createMenu();
+
+  // Außenrahmen: 4px nur außerhalb des Spielfelds
+  const border = this.add.rectangle(
+    this.mapWidth / 2,
+    this.mapHeight / 2,
+    this.mapWidth + 4,
+    this.mapHeight + 4
+  );
+  border.setFillStyle(0x000000, 0);
+  border.setStrokeStyle(4, 0xffffff);
+  this.fieldContainer.add(border);
 }
 
   createMenu() {
