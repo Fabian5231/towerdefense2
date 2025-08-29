@@ -3,7 +3,7 @@ import GameScene from "./scenes/GameScene.js";
 const config = {
   type: Phaser.AUTO,
   width: 1650,
-  height: 900,
+  height: 904,
   backgroundColor: "#000000",
   pixelArt: true, // <- wichtig
   roundPixels: true, // <- rundet Koordinaten auf ganze Pixel
