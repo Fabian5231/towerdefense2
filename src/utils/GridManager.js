@@ -24,16 +24,20 @@ export default class GridManager {
     this.graphics.clear();
     this.graphics.lineStyle(1, 0x444444, 0.6);
 
-    // Vertikale Linien
+    const half = 0.5;
+
+    // Vertikale Linien auf halben Pixeln für scharfe 1px Linien
     for (let x = 0; x <= this.gridWidth; x++) {
-      this.graphics.moveTo(x * this.gridSize, 0);
-      this.graphics.lineTo(x * this.gridSize, this.mapHeight);
+      const px = x * this.gridSize + half;
+      this.graphics.moveTo(px, half);
+      this.graphics.lineTo(px, this.mapHeight + half);
     }
 
-    // Horizontale Linien
+    // Horizontale Linien auf halben Pixeln für scharfe 1px Linien
     for (let y = 0; y <= this.gridHeight; y++) {
-      this.graphics.moveTo(0, y * this.gridSize);
-      this.graphics.lineTo(this.mapWidth, y * this.gridSize);
+      const py = y * this.gridSize + half;
+      this.graphics.moveTo(half, py);
+      this.graphics.lineTo(this.mapWidth + half, py);
     }
 
     this.graphics.strokePath();
